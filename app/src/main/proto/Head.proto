@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option java_package = "com.example.parking";
+option java_outer_classname = "HeadProto";
+
+message Head {
+
+  string Head = 1;
+
+}

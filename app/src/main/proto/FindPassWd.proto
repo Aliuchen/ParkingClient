@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option java_package = "com.example.parking";
+option java_outer_classname = "FindPassWd";
+
+message FindPwdRequest {
+
+  string tel = 1;
+
+}
+
+message FindPwdResponse {
+
+  int32 code = 1;
+
+}

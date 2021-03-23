@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    tools:context=".FindpasswdActivity">
+
+    <TextView
+        android:id="@+id/tx_1"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:text="找回密码"
+        android:textColor="#0F0F0F"
+        android:textSize="40sp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        />
+    <EditText
+        android:id="@+id/et_username"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="60dp"
+        android:textColor="#000000"
+        android:hint="请输入手机号"
+        android:inputType="phone|number"
+        android:digits="1234567890"
+        android:maxLength="11"
+        android:textColorHint="#D4D4D4"
+        android:background="@drawable/bg_box"
+
+        />
+
+
+    <Button
+        android:id="@+id/btn_find"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:background="@drawable/bg_box"
+        android:text="找回"
+        android:textSize="20sp"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:layout_marginLeft="170dp"
+        />
+
+</LinearLayout>

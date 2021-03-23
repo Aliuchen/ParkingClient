@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_package = "com.example.parking";
+option java_outer_classname = "RegisterProto";
+
+message RegisterRequest {
+
+  string username = 1;
+  string password = 2;
+  string usermail = 3;
+}
+
+message RegisterResponse {
+
+  int32 code = 1;
+  string info = 2;
+
+}

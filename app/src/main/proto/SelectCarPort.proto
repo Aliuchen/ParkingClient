@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_package = "com.example.parking";
+option java_outer_classname = "SelectCarProto";
+
+// 车位请求体
+message CarRequest {
+
+  string longitude = 1;
+  string latitude = 2;
+}
+
+// 车位回复体
+
+message CarInfo {
+
+  string area = 1;
+  repeated int32 location = 2;
+
+}
+
+message CarResponse {
+
+  int32 code = 1;
+  int32 car_num = 2;
+  repeated CarInfo info = 3;
+}

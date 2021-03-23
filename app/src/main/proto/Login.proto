@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "com.example.parking";
+option java_outer_classname = "LoginProto";
+
+
+//登录请求结构体
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+// 登录回复结构体
+message LoginResponse {
+  int32 code = 1;
+  string info = 2;
+}
