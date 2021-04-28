@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_package = "com.example.parking";
+option java_outer_classname = "OrderProto";
+
+message OrderSubmitRequest {
+
+  string userTel = 1;
+  string orderId = 2;
+  string location = 3;
+  string startReserveTime = 4;
+  string startParkingTime = 5;
+  string endTime = 6;
+  int32 parkTag = 7;
+  int32 payTag = 8;
+  double consume = 9;
+  string pwd = 10;
+}
+
+message OrderSubmitResponse {
+
+  int32 code = 1;
+  string money = 2;
+  string info = 3;
+}

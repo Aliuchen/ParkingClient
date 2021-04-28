@@ -34,6 +34,8 @@ public class MainActivity extends SocketActivity {
     private boolean isPermissionRequested;
     private FileInputStream in;
     private BufferedReader bufferedReader;
+    private String uName = null;
+    private String uPassword = null;
 
     private static final String TAG = "MainActivity";
 
@@ -70,8 +72,6 @@ public class MainActivity extends SocketActivity {
 
                 try {
 
-                    String uName = null;
-                    String uPassword = null;
                     in = MainActivity.this.openFileInput("userInfo");
                     bufferedReader = new BufferedReader(new InputStreamReader(in));
                     uName = bufferedReader.readLine();
@@ -151,6 +151,7 @@ public class MainActivity extends SocketActivity {
                                 public void run() {
 
                                     Intent intent = new Intent(MainActivity.this, FSActivity.class);
+                                    intent.putExtra("telNum",uName);
                                     startActivity(intent);
                                     finish();
                                 }

@@ -5,4 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="white">#ede4e8</color>
     <color name="title_text">#26B8EE</color>
+    <color name="rdb_bg">#151515</color>
+    <color name="yellow">#fdd108</color>
+    <color name="transparent">#00000000</color>
 </resources>

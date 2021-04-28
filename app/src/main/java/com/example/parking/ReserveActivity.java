@@ -33,6 +33,7 @@ public class ReserveActivity extends SocketActivity implements OnGetSuggestionRe
     private EditText mEditCity = null;
     private AutoCompleteTextView mKeyWordsView = null;
     private ListView mSugListView;
+    private String userTel = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +97,10 @@ public class ReserveActivity extends SocketActivity implements OnGetSuggestionRe
         mKeyWordsView = (AutoCompleteTextView) findViewById(R.id.searchkey);
         mKeyWordsView.setThreshold(1);
 
+        Intent intent = getIntent();
+        userTel = intent.getStringExtra("telNum");
+
+
 
     }
 
@@ -155,11 +160,13 @@ public class ReserveActivity extends SocketActivity implements OnGetSuggestionRe
 
 
 
-        Intent intent = new Intent(this,marketLocationActivity.class);
+        Intent intent = new Intent(getApplicationContext(),marketLocationActivity.class);
 
         intent.putExtra("city",city);
         intent.putExtra("key",site);
         intent.putExtra("dis",dis);
+        intent.putExtra("telNum",userTel);
+
         startActivity(intent);
 
 

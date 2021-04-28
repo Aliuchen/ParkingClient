@@ -19,7 +19,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SelectCarportActivity"></activity>
+        <activity android:name=".LocationActivity"></activity>
+        <activity android:name=".parkParticularsActivity" />
+        <activity android:name=".test" />
+        <activity android:name=".UserInfoActivity" />
+        <activity android:name=".PayActivity" />
+        <activity android:name=".OrderHistoryActivity" />
+        <activity android:name=".UserInfoSetActivity" />
+        <activity android:name=".Util.UserInfoActivity" />
+        <activity android:name=".SelectCarportActivity" />
         <activity android:name=".marketLocationActivity" />
         <activity android:name=".ReserveActivity" />
         <activity android:name=".FindCarportActivity" />

@@ -15,3 +15,4 @@ message LoginResponse {
   int32 code = 1;
   string info = 2;
 }
+

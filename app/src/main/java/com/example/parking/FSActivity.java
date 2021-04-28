@@ -2,32 +2,45 @@ package com.example.parking;
 
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.example.parking.ManageActivity.SocketActivity;
 import com.example.parking.bean.WeatherBean;
 import com.example.parking.com.example.style.SlideMenu;
+import com.example.parking.information.SocketServiceInfo;
 import com.google.gson.Gson;
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.squareup.picasso.Picasso;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.text.DecimalFormat;
 
+import Function.PackRequest;
 
-import java.lang.annotation.AnnotationTypeMismatchException;
 
 public class FSActivity extends SocketActivity  {
 
 
     private static final String TAG = "FSActivity";
+
+    private AttributeSet mySet;
+    public static boolean flag = true;
+
+
     private ImageView mIvMore;
     private SlideMenu slideMenu;
 
@@ -44,12 +57,32 @@ public class FSActivity extends SocketActivity  {
 
     public LocationClient mLocationClient = null;
 
+    private ImageView wallet;  // 钱包
+    private ImageView member;   // 会员
+    private ImageView myCar;     // 我的汽车
+    private ImageView historyOrder;  // 历史订单
+    private ImageView personInfo;  // 个人信息
+    private ImageView personSet;   // 个人设置
+    private String userTelNum;
+    private TextView personTelNum;
     /*
     private String url1 = "http://api.map.baidu.com/telematics/v3/weather?location=";
     private String url2 = "&output=json&ak=v3mVu1BW6ROKH7Xl0Gp6sDNAyhpQ1PU2";
 
 
      */
+
+    private TextView userBalance;
+    private TextView userMember;
+    private TextView userCar;
+
+    private String keyUserName = "";
+    private String keyUserId = "";
+    private String keyUserCar = "";
+    private String keyUserCarId = "";
+    private String keyUserMember = "";
+    private String keyUserBalance = "";
+    private String keyUserMail = "";
 
 
     private String cityName;
@@ -80,10 +113,41 @@ public class FSActivity extends SocketActivity  {
     @Override
     protected void initView() {
 
+
+
         // 点击侧滑
         mIvMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(keyUserName.isEmpty()) {
+                    flag = true;
+                }
+
+                if(flag) {
+
+
+                    if(iCommunication == null) {
+                        showToast("初始化失败");
+                    }else  {
+
+                        PersonInfoProto.PersonInfoRequest  infoRequest = PersonInfoProto.PersonInfoRequest.newBuilder()
+                                .setTelNum(userTelNum).build();
+                        byte[] request = infoRequest.toByteArray();
+                        byte[] toSend = PackRequest.packMsg(SocketServiceInfo.KEY_LOADINFO,request);
+
+                        Log.i(TAG,"toSend message is"+toSend.toString());
+
+                        if(!iCommunication.sendMessage(toSend)) {
+
+                            showToast("初始化网路失败!");
+
+                        }
+
+                        flag = false;
+                    }
+
+                }
 
                 slideMenu.switchMenu();
 
@@ -101,7 +165,9 @@ public class FSActivity extends SocketActivity  {
         carInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(FSActivity.this, SelectCarportActivity.class);
+                Intent intent = new Intent(FSActivity.this, parkParticularsActivity.class);
+                intent.putExtra("telNum",userTelNum);
+                //Intent intent = new Intent(FSActivity.this,LocationActivity.class);
                 startActivity(intent);
             }
         });
@@ -113,9 +179,71 @@ public class FSActivity extends SocketActivity  {
                 showToast("预定");
 
                 Intent intent = new Intent(FSActivity.this, ReserveActivity.class);
+                intent.putExtra("telNum",userTelNum);
                 startActivity(intent);
             }
         });
+
+        wallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FSActivity.this, PayActivity.class);
+                intent.putExtra("telNum",userTelNum);
+                startActivityForResult(intent,101);
+            }
+        });
+
+        // 会员
+        member.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        myCar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        historyOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FSActivity.this, OrderHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        personInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(FSActivity.this, UserInfoActivity.class);
+                intent.putExtra("userName",keyUserName);
+                intent.putExtra("userTel",userTelNum);
+                intent.putExtra("userCar",keyUserCar);
+                intent.putExtra("userCarId",keyUserCarId);
+                intent.putExtra("userId",keyUserId);
+                intent.putExtra("userMail",keyUserMail);
+
+                startActivity(intent);
+            }
+        });
+
+        personSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FSActivity.this, UserInfoSetActivity.class);
+                intent.putExtra("telNum",userTelNum);
+                startActivity(intent);
+            }
+        });
+
+
+
 
 
 
@@ -140,6 +268,86 @@ public class FSActivity extends SocketActivity  {
         carInfo = findViewById(R.id.car_info);
 
         reserve = findViewById(R.id.market);
+
+        wallet = findViewById(R.id.money_goto);
+        member = findViewById(R.id.vip_goto);
+        myCar = findViewById(R.id.car_goto);
+        historyOrder = findViewById(R.id.order_goto);
+        personInfo = findViewById(R.id.person_goto);
+        personSet = findViewById(R.id.set_goto);
+
+        personTelNum = findViewById(R.id.user_name);
+        userBalance = findViewById(R.id.menu_money);
+        userMember = findViewById(R.id.menu_vip);
+        userCar = findViewById(R.id.menu_car);
+
+
+
+        Intent intent = getIntent();
+        userTelNum = intent.getStringExtra("telNum");
+
+        if(userTelNum != null) {
+            personTelNum.setText(userTelNum);
+        }
+
+        addList(SocketServiceInfo.ACTIVITY_LOADUSERINFO);
+        mReciver = new MessageBackReciver(){
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                String action = intent.getAction();
+                if(action.equals(SocketServiceInfo.ACTIVITY_LOADUSERINFO)) {
+
+                    byte[] lastResult = intent.getByteArrayExtra(SocketServiceInfo.MESSAGE_LOADINFO);
+
+                    try {
+                        PersonInfoProto.PersonInfoResponse  infoResponse = PersonInfoProto.PersonInfoResponse.newBuilder().mergeFrom(lastResult).build();
+                        if(infoResponse.getCode() == 2) {
+
+                            showToast("您还未设置个人信息");
+
+                        } else  {
+
+
+
+                            Log.i(TAG,"userName : "+infoResponse.getPersonName()+"userId : "+infoResponse.getUserId()+"carName: "+
+                                    infoResponse.getCarName()+"carID : "+infoResponse.getCarId()+"member : "+infoResponse.getMember()
+                            +"balance ："+infoResponse.getBalance());
+
+                            keyUserName = infoResponse.getPersonName();
+                            keyUserMember = infoResponse.getMember();
+                            keyUserBalance = infoResponse.getBalance();
+                            double money = Double.parseDouble(keyUserBalance);
+                            DecimalFormat df = new DecimalFormat("0.00");
+                            keyUserBalance = df.format(money);
+                            keyUserCar = infoResponse.getCarName();
+                            keyUserCarId = infoResponse.getCarId();
+                            keyUserId = infoResponse.getUserId();
+                            keyUserMail = infoResponse.getUserMail();
+
+                        }
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                personTelNum.setText(keyUserName+"|"+userTelNum);
+                                userBalance.setText(keyUserBalance);
+                                userMember.setText(keyUserMember);
+                                userCar.setText(keyUserCar);
+                            }
+                        });
+                    } catch (InvalidProtocolBufferException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+
+            }
+        };
+
+
+
+
 
 
     }
@@ -284,6 +492,38 @@ public class FSActivity extends SocketActivity  {
 
              */
 
+        }
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        if(requestCode == 101) {
+
+
+            try{
+
+
+                String money = data.getStringExtra("balance");
+
+                if(money != null) {
+
+                    keyUserBalance = money;
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            userBalance.setText(keyUserBalance);
+                        }
+                    });
+
+                }
+
+            } catch (NullPointerException e) {
+
+                e.printStackTrace();
+            }
         }
 
     }

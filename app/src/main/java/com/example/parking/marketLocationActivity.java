@@ -39,6 +39,7 @@ public class marketLocationActivity extends SocketActivity implements OnGetGeoCo
     private String city = null;
     private String key = null;
     private String dis = null;
+    private String userTel = null;
 
     private String longitude = null;
     private String latitude = null;
@@ -74,6 +75,7 @@ public class marketLocationActivity extends SocketActivity implements OnGetGeoCo
                 intent.putExtra("key",key);
                 intent.putExtra("longitude",longitude);
                 intent.putExtra("latitude",latitude);
+                intent.putExtra("telNum",userTel);
                 startActivity(intent);
             }
         });
@@ -105,6 +107,7 @@ public class marketLocationActivity extends SocketActivity implements OnGetGeoCo
 
         dis = intent.getStringExtra("dis");
         key = intent.getStringExtra("key");
+        userTel = intent.getStringExtra("telNum");
 
         int index = city.indexOf("=");
         city = city.substring(index+1);

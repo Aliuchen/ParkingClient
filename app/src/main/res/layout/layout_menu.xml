@@ -35,22 +35,24 @@
             android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
-            
-
-
-            <TextView
-                android:id="@+id/user_val"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="182****5882"
-                android:textColor="#000000"
-                android:textSize="17sp"
-                android:layout_centerHorizontal="true"/>
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/user_name"
+                    android:text="刘晨 | 15591485221"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
+
+            </LinearLayout>
         </RelativeLayout>
 
     </RelativeLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,65 +62,304 @@
         android:background="#ffffff"
         tools:ignore="MissingConstraints"
         >
-        <com.example.parking.com.example.style.nav_bar
-            android:id="@+id/wallet"
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            my:icon="@mipmap/money_bag"
-            my:hint="钱包"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             >
-        </com.example.parking.com.example.style.nav_bar>
 
-        <com.example.parking.com.example.style.nav_bar
-            android:id="@+id/vip"
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/back"
+                android:layout_weight="0.2"
+                android:src="@mipmap/money_bag"
+                />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:hint="钱包"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:id="@+id/title"
+                android:layout_weight="0.2"
+
+                />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="10.00"
+                android:gravity="center_vertical|right"
+                android:textSize="20sp"
+                android:id="@+id/menu_money"
+                android:layout_weight="0.8"
+
+                />
+
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/right"
+                android:layout_weight="0.1"
+                android:id="@+id/money_goto"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            my:icon="@mipmap/first"
-            my:hint="会员"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             >
-        </com.example.parking.com.example.style.nav_bar>
 
-        <com.example.parking.com.example.style.nav_bar
-            android:id="@+id/mycar"
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.2"
+                android:src="@mipmap/first"
+                />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:hint="会员"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:layout_weight="0.2"
+
+                />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="VIP 1"
+                android:gravity="center_vertical|right"
+                android:textSize="20sp"
+                android:id="@+id/menu_vip"
+                android:layout_weight="0.8"
+
+                />
+
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/right"
+                android:layout_weight="0.1"
+                android:id="@+id/vip_goto"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            my:icon="@mipmap/mycar"
-            my:hint="我的车辆"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             >
-        </com.example.parking.com.example.style.nav_bar>
 
-        <com.example.parking.com.example.style.nav_bar
-            android:id="@+id/order"
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.2"
+                android:src="@mipmap/mycar"
+                />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:hint="我的车辆"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:layout_weight="0.2"
+
+                />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="宝马"
+                android:gravity="center_vertical|right"
+                android:textSize="20sp"
+                android:id="@+id/menu_car"
+                android:layout_weight="0.8"
+
+                />
+
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/right"
+                android:layout_weight="0.1"
+                android:id="@+id/car_goto"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            my:icon="@mipmap/my_reward_manage"
-            my:hint="我的订单"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             >
-        </com.example.parking.com.example.style.nav_bar>
 
-        <com.example.parking.com.example.style.nav_bar
-            android:id="@+id/info"
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.2"
+                android:src="@mipmap/my_reward_manage"
+                />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:hint="我的订单"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:layout_weight="0.2"
+
+                />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:gravity="center_vertical|right"
+                android:textSize="20sp"
+                android:id="@+id/menu_order"
+                android:layout_weight="0.8"
+
+                />
+
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/right"
+                android:layout_weight="0.1"
+                android:id="@+id/order_goto"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            my:icon="@mipmap/personal"
-            my:hint="个人信息"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             >
-        </com.example.parking.com.example.style.nav_bar>
 
-        <Button
-            android:id="@+id/btn_exit"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/quit"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
-            android:text="安全退出"
-            android:textSize="30sp"
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.2"
+                android:src="@mipmap/personal"
+                />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:hint="个人信息"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:layout_weight="0.2"
+
+                />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:gravity="center_vertical|right"
+                android:textSize="20sp"
+                android:id="@+id/menu_person"
+                android:layout_weight="0.8"
+
+                />
+
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/right"
+                android:layout_weight="0.1"
+                android:id="@+id/person_goto"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             >
-        </Button>
 
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.2"
+                android:src="@mipmap/set"
+                />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:hint="设置"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:layout_weight="0.2"
+
+                />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:gravity="center_vertical|right"
+                android:textSize="20sp"
+                android:id="@+id/menu_set"
+                android:layout_weight="0.8"
+
+                />
+
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/right"
+                android:layout_weight="0.1"
+                android:id="@+id/set_goto"
+                />
+
+        </LinearLayout>
 
     </LinearLayout>
+
 
 
 

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_package = "com.example.parking";
+option java_outer_classname = "OrderCarProto";
+
+message OrderRequest {
+
+  string longitude = 1;
+  string latitude = 2;
+  string area = 3;   // 区域
+  string location = 4; // 位置
+
+}
+
+message OrderResponse {
+
+  int32 code = 1;
+  string area = 2;
+  string location = 3;
+  string info = 4;
+
+}

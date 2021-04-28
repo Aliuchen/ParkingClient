@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option java_package = "com.example.parking";
+option java_outer_classname = "IsSetPayPwdProto";
+
+message IsSetPayPwdRequest {
+
+  string  userTel = 1;
+}
+
+message IsSetPayPwdResponse {
+
+  int32 isSet = 1;
+}

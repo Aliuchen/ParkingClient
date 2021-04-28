@@ -130,17 +130,19 @@ public class LoginActivity extends SocketActivity {
 
         });
 
-        btn_forgetPassword.setOnClickListener(new OnSingleClickListener() {
+        btn_forgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSingleClick(View view)  {
+            public void onClick(View v) {
+
                 Intent intent = new Intent(LoginActivity.this, FindpasswdActivity.class);
                 startActivity(intent);
             }
         });
 
-        btn_register.setOnClickListener(new OnSingleClickListener() {
+        btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSingleClick(View view)  {
+            public void onClick(View v) {
+
                 Intent intent = new Intent(LoginActivity.this, registerActivity.class);
                 startActivity(intent);
             }
@@ -194,6 +196,7 @@ public class LoginActivity extends SocketActivity {
                                 public void run() {
 
                                     Intent intent = new Intent(LoginActivity.this, FSActivity.class);
+                                    intent.putExtra("telNum",uName);
                                     startActivity(intent);
                                 }
                             });

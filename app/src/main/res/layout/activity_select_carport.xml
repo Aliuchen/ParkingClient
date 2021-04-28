@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#ffffff">
 
     <com.example.parking.com.example.style.SeatTable
@@ -12,8 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     </com.example.parking.com.example.style.SeatTable>
-
-
     <TextView
         android:id="@+id/tx_info"
         android:layout_width="wrap_content"
@@ -29,12 +27,22 @@
         android:id="@+id/btn_reserve"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:text="立即预定"
+        android:textSize="20sp"></Button>
+
+    <Button
+        android:id="@+id/btn_load"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="加载位置"
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/tx_info"
         >
     </Button>
 
 
 </RelativeLayout>
+

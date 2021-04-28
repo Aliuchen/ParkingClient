@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_package = "com.example.parking";
+option java_outer_classname = "PersonInfoSetProto";
+
+message PersonInfoSetRequest {
+
+  string userTel = 7;
+  string personName = 1;
+  string personTelNum = 2;
+  string personId = 3;
+  string carName = 4;
+  string carId = 5;
+  string payPwd = 6;
+}
+
+message  PersonInfoSetResponse {
+
+  int32 code = 1;
+  string info = 2;
+}

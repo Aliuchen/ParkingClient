@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_package = "com.example.parking";
+option java_outer_classname = "RechargeProto";
+
+message RechargeRequest {
+
+  string userTelNum = 1;
+  double money = 2;
+  string payPwd = 3;
+
+}
+
+message RechargeResponse {
+
+  int32  code = 1;
+  string info = 2;
+  string balance = 3;
+}

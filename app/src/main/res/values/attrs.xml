@@ -15,6 +15,8 @@
         <attr name="icon" format="reference"></attr>
         <!--字体-->
         <attr name="hint" format="string|dimension"></attr>
+        <!--具体信息-->
+        <attr name="info" format="string|dimension"></attr>
         <!--是否密文-->
         <attr name="pass" format="boolean"></attr>
         <attr name="right_icon" format="reference"></attr>

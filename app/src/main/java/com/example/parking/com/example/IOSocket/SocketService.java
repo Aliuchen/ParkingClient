@@ -161,8 +161,13 @@ public class SocketService extends Service {
         headMap.put(SocketServiceInfo.MESSAGE_LOGIN,SocketServiceInfo.ACTIVITY_LOGIN); // 登录
         headMap.put(SocketServiceInfo.MESSAGE_FINDPWD,SocketServiceInfo.ACTIVITY_FINDPWD); // 找回密码
         headMap.put(SocketServiceInfo.MESSAGE_REGISTER,SocketServiceInfo.ACTIVITY_REGISTER); // 注册
-        headMap.put(SocketServiceInfo.MESSAGE_SELECTCAR,SocketServiceInfo.ACTIVITY_SELECTCAR); // 预定车位
-
+        headMap.put(SocketServiceInfo.MESSAGE_SELECTCAR,SocketServiceInfo.ACTIVITY_SELECTCAR); // 预定车位初始化
+        headMap.put(SocketServiceInfo.MESSAGE_SELECTCAREND,SocketServiceInfo.ACTIVITY_SELECTCAR); // 车位预定
+        headMap.put(SocketServiceInfo.MESSAGE_INFOSET,SocketServiceInfo.ACTIVITY_USERINFOSET); // 个人信息设置
+        headMap.put(SocketServiceInfo.MESSAGE_LOADINFO,SocketServiceInfo.ACTIVITY_LOADUSERINFO); // 加载个人信息
+        headMap.put(SocketServiceInfo.MESSAGE_PAY,SocketServiceInfo.ACTIVITY_RECHARGEMONEY); // 充值
+        headMap.put(SocketServiceInfo.MESSAGE_ISSETPAYPWD,SocketServiceInfo.ACTIVITY_SELECTCAR); // 是否设置支付密码
+        headMap.put(SocketServiceInfo.MESSAGE_SUBMIT,SocketServiceInfo.ACTIVITY_SUBMITORDER);   // 订单生成
         if(!isSocketInit) {
 
             new InitSocketThread().start();

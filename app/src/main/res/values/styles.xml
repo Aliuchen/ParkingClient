@@ -36,4 +36,10 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <!--支付密码Dialog筛选器-->
+    <style name="walletFrameWindowStyle" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
 </resources>

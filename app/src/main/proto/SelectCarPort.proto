@@ -14,8 +14,8 @@ message CarRequest {
 
 message CarInfo {
 
-  string area = 1;
-  repeated int32 location = 2;
+  string area = 1;    // 区域
+  repeated int32 location = 2;  //具体的已经停车的位置
 
 }
 
@@ -25,3 +25,4 @@ message CarResponse {
   int32 car_num = 2;
   repeated CarInfo info = 3;
 }
+
